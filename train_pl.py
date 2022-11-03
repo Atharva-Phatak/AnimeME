@@ -6,12 +6,12 @@ import numpy as np
 import pytorch_lightning as pl
 import torch
 import torch.optim as optim
+from omegaconf import OmegaConf
 
 from data.dataset import AnimeDataset
+from loss_function.loss import AnimeGANLoss
 from modelling.discriminator import Discriminator
 from modelling.generator import Generator
-from loss_function.loss import AnimeGANLoss
-from omegaconf import OmegaConf
 from modelling.vgg_features import Vgg19
 
 
