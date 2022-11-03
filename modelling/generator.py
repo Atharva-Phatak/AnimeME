@@ -1,8 +1,9 @@
 import torch
 import torch.nn.functional as F
 from torch import nn
-#from layer
-from .layers import ConvNormLReLU, InvertedResBlock
+
+# from layer
+from modelling.layers import ConvNormLReLU, InvertedResBlock
 
 
 class Generator(nn.Module):
