@@ -1,8 +1,9 @@
-import torch
 import os
 from collections import defaultdict
-import numpy as np
+
 import cv2
+import numpy as np
+import torch
 
 
 def normalize_input(image):
@@ -21,7 +22,7 @@ def compute_data_mean(files):
 
 
 class AnimeDataset(torch.utils.data.Dataset):
-    def __init__(self, data_path, style : str, isTrain = True, transform=None):
+    def __init__(self, data_path, style: str, isTrain=True, transform=None):
         self.image_files = {}
         self.style = f"{style}/style"
         self.smooth = f"{style}/smooth"
@@ -29,7 +30,7 @@ class AnimeDataset(torch.utils.data.Dataset):
             self.photo = "train_photo"
         else:
             self.photo = "val"
-            #self.transform
+            # self.transform
         for photo_type in [self.photo, self.style, self.smooth]:
             folder = os.path.join(data_path, photo_type)
             files = os.listdir(folder)
@@ -39,18 +40,18 @@ class AnimeDataset(torch.utils.data.Dataset):
 
         self.transform = transform
         self.mean = compute_data_mean(self.image_files[self.style])
-    
+
     @property
     def len_anime(self):
         return len(self.image_files[self.style])
-    
+
     @property
     def len_smooth(self):
         return len(self.image_files[self.smooth])
 
     def __len__(self):
         return len(self.image_files[self.photo])
-    
+
     def __getitem__(self, index):
         image = self.load_photo(index)
         anm_idx = index
@@ -59,15 +60,20 @@ class AnimeDataset(torch.utils.data.Dataset):
 
         anime, anime_gray = self.load_anime(anm_idx)
         smooth_gray = self.load_anime_smooth(anm_idx)
-        
-        return image.type(torch.float), anime.type(torch.float), anime_gray.type(torch.float), smooth_gray.type(torch.float)
+
+        return (
+            image.type(torch.float),
+            anime.type(torch.float),
+            anime_gray.type(torch.float),
+            smooth_gray.type(torch.float),
+        )
 
     def load_photo(self, index):
         fpath = self.image_files[self.photo][index]
         image = cv2.imread(fpath)[:, :, ::-1]
         image = self._transform(image, addmean=False)
         if self.photo == "val":
-           image = cv2.resize(image, (256,256))
+            image = cv2.resize(image, (256, 256))
         image = image.transpose(2, 0, 1)
         return torch.tensor(image)
 

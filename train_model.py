@@ -1,10 +1,12 @@
-from train_pl import AnimeGANTrainer
+import argparse
+
 import pytorch_lightning as pl
-from pytorch_lightning.loggers import MLFlowLogger
 
 # from params import Params
 from omegaconf import OmegaConf
-import argparse
+from pytorch_lightning.loggers import MLFlowLogger
+
+from train_pl import AnimeGANTrainer
 
 
 def trainCLI():
