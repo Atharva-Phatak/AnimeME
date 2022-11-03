@@ -1,7 +1,7 @@
 # **AnimeGAN Pytorch**
 
 
-[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-brightgreen)](https://huggingface.co/spaces/Atharva-Phatak/AnimeGAN)  ![License](https://img.shields.io/github/license/Atharva-Phatak/AnimeGAN?color=blue&label=Apache)
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-brightgreen)](https://huggingface.co/spaces/Atharva-Phatak/AnimeGAN)  ![License](https://img.shields.io/github/license/Atharva-Phatak/AnimeGAN?color=blue&label=License)
 ***
 
 Pytorch implementation of AnimeGAN for fast photo animation.
