@@ -1,4 +1,4 @@
-# **AnimeGAN Pytorch**
+# **AnimeME: Apply anime styles to your photos using GANs**
 
 
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-brightgreen)](https://huggingface.co/spaces/Atharva-Phatak/AnimeGAN)  ![License](https://img.shields.io/github/license/Atharva-Phatak/AnimeGAN?color=blue&label=License) ![Lightning Cloud](https://img.shields.io/badge/LightningAI-Deployed-blue)
