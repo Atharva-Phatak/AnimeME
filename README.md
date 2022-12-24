@@ -1,17 +1,24 @@
 # **AnimeGAN Pytorch**
 
 
-[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-brightgreen)](https://huggingface.co/spaces/Atharva-Phatak/AnimeGAN)  ![License](https://img.shields.io/github/license/Atharva-Phatak/AnimeGAN?color=blue&label=License)
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-brightgreen)](https://huggingface.co/spaces/Atharva-Phatak/AnimeGAN)  ![License](https://img.shields.io/github/license/Atharva-Phatak/AnimeGAN?color=blue&label=License) ![Lightning Cloud](https://img.shields.io/badge/LightningAI-Deployed-blue)
 ***
 
 Pytorch implementation of AnimeGAN for fast photo animation.
 * *AnimeGAN: a novel lightweight GAN for photo animation* - [Semantic scholar](https://www.semanticscholar.org/paper/AnimeGAN%3A-A-Novel-Lightweight-GAN-for-Photo-Chen-Liu/10a9c5d183e7e7df51db8bfa366bc862262b37d7#citing-papers)
 
-
-* **[Official online demo](https://huggingface.co/spaces/Atharva-Phatak/AnimeGAN) is integrated to [Huggingface Spaces](https://huggingface.co/spaces) with [Gradio](https://github.com/gradio-app/gradio)**.
+***
+## **Deployments**
+* *Gradio App* is deployed on [Huggingface-Spaces](https://huggingface.co/spaces/Atharva-Phatak/AnimeGAN) 🤗
+* Backend developed using FastAPI is deployed on [lightning-cloud](https://01gjvacr37wngdkmwwj46j4te1.litng-ai-03.litng.ai/view/Swagger)
 ***
 
 ## **Documentation**
+
+### Folder Structure
+* src: Training Code
+* gradio_app: code for the app deployed on huggingface-spaces
+* lightning_backend: code for the lightning app backend deployed on lightning-cloud.
 
 ### **1. Install required dependencies**
 
@@ -27,7 +34,7 @@ pip install -r requirements.txt
 * Extract the dataset to the desired folder. Run the below command if there are no smooth images in your style folder i.e Hayao, Paprika, etc
 
 ```bash
-python data_process --data_dir <Path to the stored location of dataset> --dataset <The name of the style data i.e Hayao/Paprika/Shenkai> --image-size 256
+python src/data_process --data_dir <Path to the stored location of dataset> --dataset <The name of the style data i.e Hayao/Paprika/Shenkai> --image-size 256
 ```
 
 
@@ -37,7 +44,7 @@ python data_process --data_dir <Path to the stored location of dataset> --datase
 * You can play around the parameters in params.yaml file avaiable in ```Params``` folder.
 
 ```bash
-python train_model.py
+python src/train_model.py
 ```
 
 ### **3. Transform images**
@@ -47,8 +54,30 @@ To convert images in a folder or single image, run `inference_image.py`, for exa
 > --src and --dest can be a path to file : "./images/fake.png" or something like this.
 
 ```bash
-python infer.py --checkpoint_path <path to saved checkpoint> --source_path <path to src image> --dest_path <path to where image should be saved>
+python src/infer.py --checkpoint_path <path to saved checkpoint> --source_path <path to src image> --dest_path <path to where image should be saved>
 ```
+
+### **4. Run lightning app on local system**
+
+To run lightning app on your local system follow the below instructions
+
+* Navigate to ```lightning_backend``` folder and install the requirements.
+* Run the below command to run the app.
+
+``` lightning run app app.py```
+
+* This will open up ![swagger-ui](https://github.com/swagger-api/swagger-ui) for the app. 
+
+* If you want to use the backend which I have deployed use the below command to curl for results
+```
+curl -X 'POST' \
+  'https://mhwgp-01gjvacrnf5yhhtdeebd0bhw3t.litng-ai-03.litng.ai/api/predict' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'data=<Path to your file>'
+```
+
+**Note: I cannot guarantee how much time this API will be hosted as it may cost me later down the line.**
 
 ## Anime transformation results
 
