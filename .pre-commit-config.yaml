@@ -1,9 +1,4 @@
 repos:
--   repo: https://github.com/pycqa/isort
-    rev: v5.11.3
-    hooks:
-      - id: isort
-        name: isort (python)
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
