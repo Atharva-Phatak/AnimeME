@@ -16,9 +16,9 @@ Pytorch implementation of AnimeGAN for fast photo animation.
 ## **Documentation**
 
 ### Folder Structure
-* src: Training Code
-* gradio_app: code for the app deployed on huggingface-spaces
-* lightning_backend: code for the lightning app backend deployed on lightning-cloud.
+* **src**: Training Code
+* **gradio_app**: code for the app deployed on huggingface-spaces
+* **lightning_backend**: code for the lightning app backend deployed on lightning-cloud.
 
 ### **1. Install required dependencies**
 
