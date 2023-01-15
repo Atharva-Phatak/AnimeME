@@ -105,5 +105,4 @@ Below is how my loss looked like for overall training. All the tracking is done 
 
 
 ## Work in Progress
-- [ ] Custom anime dataset
 - [ ] TensorRT/Onnx models.
