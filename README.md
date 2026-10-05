@@ -66,7 +66,7 @@ To run lightning app on your local system follow the below instructions
 
 ``` lightning run app app.py```
 
-* This will open up ![swagger-ui](https://github.com/swagger-api/swagger-ui) for the app. 
+* This will open up ![swagger-ui](https://github.com/swagger-api/swagger-ui) for the app.
 
 * If you want to use the backend which I have deployed use the below command to curl for results
 ```
